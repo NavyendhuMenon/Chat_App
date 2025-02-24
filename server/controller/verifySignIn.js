@@ -15,7 +15,7 @@ const signIn = async (req, res) => {
     const validPassword = await bcryptjs.compare(password, validUser.password);
 
     if (!validPassword) {
-      return res.status(401).json({ message: "Invalid credentials!" });
+      return res.status(401).json({ message: "Invalid Password!"});
     }
 
     const token = jwt.sign(
@@ -24,8 +24,16 @@ const signIn = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    res.cookie('access_token', token, { httpOnly: true, maxAge: 3600000 });
-
+    // res.cookie('access_token', token, { httpOnly: true, maxAge: 3600000 });
+    res.cookie("access_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Use false in development
+      sameSite: "None",  // Required for cross-origin requests
+      maxAge: 3600000,   // 1 hour
+    });
+    
+    // console.log(document.cookie);
+    
     res.status(200).json({
       message: "Login successfull!",
       user: {

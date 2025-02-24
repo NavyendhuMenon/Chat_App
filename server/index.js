@@ -3,7 +3,9 @@ const cors = require("cors");
 require("dotenv").config();
 const connectDB = require("./config/connectDB");
 
-const user = require ('./router/userRoute')
+
+const user = require ('./router/userRoute');
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -14,10 +16,14 @@ app.use(
   })
 );
 
+
+
 // console.log('Environment Variables:', process.env);
 // console.log('MongoDB URL:', process.env.MONGODB_URL);
 
 app.use(express.json())
+app.use(cookieParser())
+
 
 const PORT = process.env.PORT || 8000;
 
