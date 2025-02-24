@@ -24,15 +24,12 @@ const signIn = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    // res.cookie('access_token', token, { httpOnly: true, maxAge: 3600000 });
     res.cookie("access_token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Use false in development
-      sameSite: "None",  // Required for cross-origin requests
-      maxAge: 3600000,   // 1 hour
+      httpOnly: true, // Prevents client-side access
+      maxAge: 3600000, // 1 hour
+      secure: process.env.NODE_ENV === "production", // Secure in production
+      sameSite: "strict",
     });
-    
-    // console.log(document.cookie);
     
     res.status(200).json({
       message: "Login successfull!",
