@@ -1,20 +1,16 @@
+import React from 'react';
+import { GiBee } from "react-icons/gi";
 
-import React from 'react'
-import logo from  '../assets/logo.png'
-// import logo2 from '../assets/logo-weChat.png'
-
-export default function AuthLayout({children}) {
+export default function AuthLayout({ children }) {
   return (
     <div>
-
-        <>
-        <div className='flex justify-center py-3 shadow-md'>
-            <img src={logo} alt="logo" width={180} height={60} />
-        </div>
-        </>
-
-        {children}
-      
+      <div className="flex bg-white justify-center py-4 shadow-md">
+        <h1 className="text-[var(--color-primary)] text-4xl font-extrabold flex items-center gap-3">
+          ChatBee <GiBee className="text-5xl" />
+        </h1>
+      </div>
+      {children}
     </div>
-  )
+  );
 }
+

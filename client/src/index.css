@@ -1,1 +1,27 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+
+
+
+/* Extend Tailwind with custom styles */
+@layer base {
+  :root {
+    --color-primary: #ffc629; /* Primary color */
+    --color-secondary: #6b4701; /* Secondary color */
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: hsl(210, 40%, 98%); /* Alternative way */
+    @apply bg-slate-200; /* Tailwind background color */
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  }
+}
+
